@@ -22,7 +22,10 @@ digitalHouseManager.registrarAluno("Cristiano", "Arruda", 005);
 digitalHouseManager.registrarAluno("Fernando", "Trindade", 006);
 digitalHouseManager.registrarAluno("Anderson", "Silva", 007);
 
-
+// aqui seria legal que o metodo registrar aluno devolvesse um objeto do tipo Aluno
+     // Aluno aluno1 = digitalHouseManager.registrarAluno("Carlos", "Maia", 001);
+     // para que, ao matricular, pudessemos usar o proprio objeto para recuperar o código. O mesmo vale pro curso.
+     // digitalHouseManager.matricularAluno(aluno1.getCodigo() , curso1.getCodigo());
 digitalHouseManager.matricularAluno(001,2001);
 digitalHouseManager.matricularAluno(002, 2001);
 digitalHouseManager.matricularAluno(003, 2002);

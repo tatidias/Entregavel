@@ -50,6 +50,7 @@ public class DigitalHouseManager {
         adjunto.setSobrenome(sobrenome);
         adjunto.setCodigoDoProfessor(codigoDoProfessor);
         ((ProfessorAdjunto) adjunto).setQuantidadeHorasMonitoria(quantidadeHorasMonitoria);
+        // Apenas por questão de consistencia, aqui faltou "O(A) professor(a) adjunto(a)"
         System.out.println("Professor adjunto: " + adjunto.getNome() + " " + adjunto.getSobrenome() +", " + "fara parte do quadro de professores do DH.");
         System.out.println("-------------------------------");
 
@@ -76,6 +77,10 @@ public class DigitalHouseManager {
 
 
     public void matricularAluno(Integer codigoAluno, Integer codigoDoCurso){
+        // Aqui faltou usar a lógica de verificação se o curso está cheio.
+        // Esta lógica já foi implementada na classe Curso, método adicionarUmAluno, porém não foi usado
+        // Também evite essa quantidade de aninhamento for -> if -> for -> if/else
+        // crie métodos auxiliares para isso, como um método que busca o curso pelo código (lá teria um for -> if)
         for (Aluno aluno: listaAlunos){
             if(aluno.getCodigoDoAluno() == codigoAluno){
                 for(Curso curso: listaCursos){
@@ -102,6 +107,7 @@ public class DigitalHouseManager {
 
         for(Professor professor : listaProfessores){
             if(professor.getCodigoDoProfessor() == codigoDoProfessorTitular){
+                // Bom uso do casting, porém faltou um try and catch pra garantir que não vai dar Exception
                 professorTitular = (ProfessorTitular) professor;
             }
             if(professor.getCodigoDoProfessor() == codigoDoProfessorAdjunto){
@@ -110,6 +116,8 @@ public class DigitalHouseManager {
 
         }
 
+        // Aqui poderia usar o método que citei acima, um buscarCursoPorCodigo (com um for -> if)
+        // evitando repetir a logica
         for (Curso curso: listaCursos){
             if (curso.getCodigoDoCurso() == codigoDoCurso){
                 try{
